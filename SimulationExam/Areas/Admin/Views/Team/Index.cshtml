@@ -1,0 +1,50 @@
+﻿@using SimulationExam.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+@model List<Team>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Team Members</h4>
+            <a asp-action="create" class="btn btn-warning">Add Team Member</a>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Specialty
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(Team team in Model)
+                        {
+                            <tr>
+                                <td class="py-1">
+                                    <img src="~/images/@team.Image" alt="image" />
+                                </td>
+                                <td>
+                                    @team.Name
+                                </td>
+                                <td>
+                                    @team.Specialty
+                                </td>
+                                <td>
+                                    <a asp-action="update" asp-route-id="@team.Id" class="btn btn-warning">Update</a>
+                                    <a asp-action="delete" asp-route-id="@team.Id" class="btn btn-danger">Delete</a>
+                                    <a asp-action="detail" asp-route-id="@team.Id" class="btn btn-success">Detail</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
